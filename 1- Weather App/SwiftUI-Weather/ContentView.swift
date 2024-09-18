@@ -14,9 +14,12 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             BackgroundView(isNight: isNight)
+            
             VStack {
                 CityTextView(cityName: "Cupertino, CA")
+                
                 MainWeatherStatusView(imageName: "cloud.sun.fill", temperature: 76)
+                
                 Spacer()
                 
                 HStack(spacing: 24) {

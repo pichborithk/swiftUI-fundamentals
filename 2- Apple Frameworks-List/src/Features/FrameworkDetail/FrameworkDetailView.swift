@@ -8,17 +8,15 @@
 import SwiftUI
 
 #Preview {
-    FrameworkDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(true))
+    FrameworkDetailView(framework: MockData.sampleFramework)
 }
 
 struct FrameworkDetailView: View {
     let framework: Framework
-    @Binding var isShowingDetailView: Bool
     @State private var isShowingSafariView: Bool = false
 
     var body: some View {
         VStack(spacing: 24) {
-            DismissButton(isShowingModal: $isShowingDetailView)
 
             Spacer()
 

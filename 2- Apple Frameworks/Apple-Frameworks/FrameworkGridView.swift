@@ -12,6 +12,8 @@ import SwiftUI
 }
 
 struct FrameworkGridView: View {
+    @StateObject var viewModel = FrameworkGridViewModel()
+
     let colums = Array(repeating: GridItem(.flexible()), count: 3)
 
     var body: some View {
@@ -21,12 +23,15 @@ struct FrameworkGridView: View {
                     ForEach(MockData.frameworks) { framework in
                         FrameworkTitleView(framework: framework)
                             .onTapGesture {
-                                print("tap")
+                                viewModel.selectedFramework = framework
                             }
                     }
                 }.padding()
             }
             .navigationTitle("🍎 Frameworks")
+            .sheet(isPresented: $viewModel.isShowingDetailView) {
+                FrameworkDetailView(framework: viewModel.selectedFramework ?? MockData.sampleFramework, isShowingDetailView: $viewModel.isShowingDetailView)
+            }
         }
     }
 }

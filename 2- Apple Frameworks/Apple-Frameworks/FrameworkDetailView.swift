@@ -14,6 +14,7 @@ import SwiftUI
 struct FrameworkDetailView: View {
     let framework: Framework
     @Binding var isShowingDetailView: Bool
+    @State private var isShowingSafariView: Bool = false
 
     var body: some View {
         VStack(spacing: 24) {
@@ -39,7 +40,18 @@ struct FrameworkDetailView: View {
 
             Spacer()
 
-            AFButton(title: "Learn More")
-        }.padding()
+            Button {
+                isShowingSafariView = true
+            } label: {
+                AFButton(title: "Learn More")
+            }
+        }
+        .padding()
+//        .sheet(isPresented: $isShowingSafariView) {
+//            SafariView(url: URL(string: framework.urlString)!)
+//        }
+        .fullScreenCover(isPresented: $isShowingSafariView) {
+            SafariView(url: URL(string: framework.urlString)!)
+        }
     }
 }

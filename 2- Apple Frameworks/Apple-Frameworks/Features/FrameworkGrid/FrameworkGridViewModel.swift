@@ -9,14 +9,15 @@ import SwiftUI
 
 final class FrameworkGridViewModel: ObservableObject {
 
-    var selectedFramework: Framework? {
-        didSet {
-            isShowingDetailView = true
-        }
-    }
+//    var selectedFramework: Framework? {
+//        didSet {
+//            isShowingDetailView = true
+//        }
+//    }
     
     let colums = Array(repeating: GridItem(.flexible()), count: 3)
+    let frameworks: [Framework] = MockData.frameworks
     
-    @Published var isShowingDetailView = false
+//    @Published var isShowingDetailView = false
 }
 

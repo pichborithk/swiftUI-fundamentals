@@ -40,6 +40,15 @@ struct FrameworkDetailView: View {
             .buttonStyle(.bordered)
             .controlSize(.large)
             .tint(.red)
+            
+            // This is go to browser
+            Link(destination: URL(string: framework.urlString)!){
+                Label("Learn More", systemImage: "book.fill")
+            }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
+                .tint(.blue)
+            
         }
         .padding()
 //        .sheet(isPresented: $isShowingSafariView) {

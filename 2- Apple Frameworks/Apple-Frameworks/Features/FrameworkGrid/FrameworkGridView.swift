@@ -14,12 +14,11 @@ import SwiftUI
 struct FrameworkGridView: View {
     @StateObject var viewModel = FrameworkGridViewModel()
 
-    let colums = Array(repeating: GridItem(.flexible()), count: 3)
 
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: colums) {
+                LazyVGrid(columns: viewModel.colums) {
                     ForEach(MockData.frameworks) { framework in
                         FrameworkTitleView(framework: framework)
                             .onTapGesture {
@@ -37,19 +36,4 @@ struct FrameworkGridView: View {
     }
 }
 
-struct FrameworkTitleView: View {
-    let framework: Framework
 
-    var body: some View {
-        VStack {
-            Image(framework.imageName)
-                .resizable()
-                .frame(width: 80, height: 80)
-            Text(framework.name)
-                .font(.title2)
-                .fontWeight(.semibold)
-                .scaledToFit()
-                .minimumScaleFactor(0.6)
-        }
-    }
-}

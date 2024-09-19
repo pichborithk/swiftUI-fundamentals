@@ -15,6 +15,8 @@ final class FrameworkGridViewModel: ObservableObject {
         }
     }
     
+    let colums = Array(repeating: GridItem(.flexible()), count: 3)
+    
     @Published var isShowingDetailView = false
 }
 

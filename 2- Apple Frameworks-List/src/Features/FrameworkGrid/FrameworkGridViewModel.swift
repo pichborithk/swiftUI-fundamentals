@@ -9,8 +9,6 @@ import SwiftUI
 
 final class FrameworkGridViewModel: ObservableObject {
 
-    var selectedFramework: Framework?
-    
     let colums = Array(repeating: GridItem(.flexible()), count: 3)
     
 }

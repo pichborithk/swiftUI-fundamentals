@@ -12,16 +12,20 @@ import SwiftUI
 }
 
 struct AppetizerListView: View {
+    @StateObject private var viewModel = AppetizerListViewModel()
+
     var body: some View {
         NavigationView {
-            List(MockData.appetizers) { appetizer in
+            List(viewModel.appetizers) { appetizer in
                 AppetizerListCell(appetizer: appetizer)
                     .alignmentGuide(.listRowSeparatorLeading) { _ in -20 }
             }
             .listStyle(.plain)
             .navigationTitle("🍟 Appetizers")
         }
+//        .onAppear(perform: getAppetizers)
+        .onAppear {
+            viewModel.getAppetizers()
+        }
     }
 }
-
-

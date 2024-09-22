@@ -26,6 +26,7 @@ struct AppetizerListCell: View {
                     .clipped()
             } placeholder: {
                 ProgressView() // Shows a loading spinner while the image is loading
+                    .tint(.brandPrimary)
             }
             .frame(width: 120, height: 80)
 

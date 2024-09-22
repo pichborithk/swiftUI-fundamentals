@@ -10,15 +10,17 @@ import SwiftUI
 final class AppetizerListViewModel: ObservableObject {
     @Published var appetizers: [Appetizer] = []
     @Published var alertItem: AlertItem?
+    @Published var isLoading = false
 
     func getAppetizers() {
+        isLoading = true
 //        appetizers = MockData.appetizers
         NetworkManager.shared.getAppetizers { result in
             DispatchQueue.main.async { [self] in
                 switch result {
-                case .success(let appetizers):
+                case let .success(appetizers):
                     self.appetizers = appetizers
-                case .failure(let error):
+                case let .failure(error):
                     switch error {
                     case .invalidURL:
                         alertItem = AlertContext.invalidURL
@@ -30,6 +32,8 @@ final class AppetizerListViewModel: ObservableObject {
                         alertItem = AlertContext.unableToComplete
                     }
                 }
+
+                isLoading = false
             }
         }
     }

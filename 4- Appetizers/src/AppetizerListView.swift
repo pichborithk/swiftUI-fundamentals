@@ -15,17 +15,23 @@ struct AppetizerListView: View {
     @StateObject private var viewModel = AppetizerListViewModel()
 
     var body: some View {
-        NavigationView {
-            List(viewModel.appetizers) { appetizer in
-                AppetizerListCell(appetizer: appetizer)
-                    .alignmentGuide(.listRowSeparatorLeading) { _ in -20 }
+        ZStack {
+            NavigationView {
+                List(viewModel.appetizers) { appetizer in
+                    AppetizerListCell(appetizer: appetizer)
+                        .alignmentGuide(.listRowSeparatorLeading) { _ in -20 }
+                }
+                .listStyle(.plain)
+                .navigationTitle("🍟 Appetizers")
             }
-            .listStyle(.plain)
-            .navigationTitle("🍟 Appetizers")
-        }
-//        .onAppear(perform: getAppetizers)
-        .onAppear {
-            viewModel.getAppetizers()
+    //        .onAppear(perform: getAppetizers)
+            .onAppear {
+                viewModel.getAppetizers()
+            }
+            
+            if viewModel.isLoading {
+                LoadingView()
+            }
         }
         .alert(item: $viewModel.alertItem) { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)

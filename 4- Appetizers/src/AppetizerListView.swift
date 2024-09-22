@@ -14,10 +14,13 @@ import SwiftUI
 struct AppetizerListView: View {
     var body: some View {
         NavigationView {
-            Text("Appetizer List View")
-                .navigationTitle("🍟 Appetizers")
+            List(MockData.appetizers) { appetizer in
+                AppetizerListCell(appetizer: appetizer)
+                    .alignmentGuide(.listRowSeparatorLeading) { _ in -20 }
+            }
+            .listStyle(.plain)
+            .navigationTitle("🍟 Appetizers")
         }
-       
     }
 }
 

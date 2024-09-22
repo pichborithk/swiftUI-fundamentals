@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Appetizer: Codable {
+struct Appetizer: Codable, Identifiable {
     let id: Int
     let name: String
     let description: String

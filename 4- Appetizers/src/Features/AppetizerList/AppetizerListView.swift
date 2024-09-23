@@ -20,15 +20,26 @@ struct AppetizerListView: View {
                 List(viewModel.appetizers) { appetizer in
                     AppetizerListCell(appetizer: appetizer)
                         .alignmentGuide(.listRowSeparatorLeading) { _ in -20 }
+                        .onTapGesture {
+                            viewModel.selectedAppetizer = appetizer
+                            viewModel.isShowingDetails = true
+                        }
                 }
                 .listStyle(.plain)
                 .navigationTitle("🍟 Appetizers")
+                .disabled(viewModel.isShowingDetails)
             }
-    //        .onAppear(perform: getAppetizers)
+            //        .onAppear(perform: getAppetizers)
             .onAppear {
                 viewModel.getAppetizers()
             }
-            
+            .blur(radius: viewModel.isShowingDetails ? 20 : 0)
+
+            if viewModel.isShowingDetails {
+                AppetizerDetailView(appetizer: viewModel.selectedAppetizer!,
+                                    isShowingDetail: $viewModel.isShowingDetails)
+            }
+
             if viewModel.isLoading {
                 LoadingView()
             }

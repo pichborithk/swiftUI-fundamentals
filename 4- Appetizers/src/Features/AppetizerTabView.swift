@@ -8,7 +8,7 @@
 import SwiftUI
 
 #Preview {
-    AppetizerTabView()
+    AppetizerTabView().environmentObject(Order())
 }
 
 struct AppetizerTabView: View {
@@ -32,6 +32,7 @@ struct AppetizerTabView: View {
                     Text("Order")
                 }
         }
-        .accentColor(.brandPrimary)
+//        .accentColor(.brandPrimary) // deprecated replace by .tint
+        .tint(.brandPrimary)
     }
 }

@@ -20,6 +20,8 @@ struct AppetizerListView: View {
                 List(viewModel.appetizers) { appetizer in
                     AppetizerListCell(appetizer: appetizer)
                         .alignmentGuide(.listRowSeparatorLeading) { _ in -20 }
+//                        .listRowSeparator(.hidden)
+//                        .listRowSeparatorTint(.brandPrimary)
                         .onTapGesture {
                             viewModel.selectedAppetizer = appetizer
                             viewModel.isShowingDetails = true

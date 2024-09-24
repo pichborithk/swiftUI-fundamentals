@@ -12,12 +12,16 @@ import SwiftUI
 }
 
 struct AppetizerTabView: View {
+    
+    @EnvironmentObject var order: Order
+    
     var body: some View {
         TabView {
             AppetizerListView()
                 .tabItem {
-                    Image(systemName: "house")
-                    Text("Home")
+//                    Image(systemName: "house")
+//                    Text("Home")
+                    Label("Home", systemImage: "house")
                 }
 
             AccountView()
@@ -31,6 +35,7 @@ struct AppetizerTabView: View {
                     Image(systemName: "bag")
                     Text("Order")
                 }
+                .badge(order.items.count)
         }
 //        .accentColor(.brandPrimary) // deprecated replace by .tint
         .tint(.brandPrimary)

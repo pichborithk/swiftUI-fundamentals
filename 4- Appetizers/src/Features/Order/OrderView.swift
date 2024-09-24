@@ -12,10 +12,31 @@ import SwiftUI
 }
 
 struct OrderView: View {
+    
+    @State private var orderItems = MockData.orderItems
+    
     var body: some View {
         NavigationView {
-            Text("Order View")
-                .navigationTitle("📄 Orders")
+            VStack {
+                List {
+                    ForEach(orderItems) { appetizer in
+                        AppetizerListCell(appetizer: appetizer)
+                            .alignmentGuide(.listRowSeparatorLeading) { _ in -20 }
+                    }
+                    .onDelete(perform: { indexSet in
+                        orderItems.remove(atOffsets: indexSet)
+                    })
+                }
+                .listStyle(.plain)
+
+                Button {
+                    print("Order Placed")
+                } label: {
+                    APButton(title: "$99.99 - Place Order")
+                }
+                .padding(.bottom, 24)
+            }
+            .navigationTitle("📄 Orders")
         }
     }
 }

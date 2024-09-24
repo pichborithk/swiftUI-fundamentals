@@ -61,4 +61,9 @@ struct MockData {
         Appetizer(id: 13, name: "Rainbow Spring Rolls", description: "How did these even make the menu???", price: 5.99, imageUrl: "https://seanallen-course-backend.herokuapp.com/images/appetizers/rainbow-spring-rolls.jpg", calories: 270, protein: 2, carbs: 4),
         Appetizer(id: 14, name: "Stuffed Shells", description: "I'm getting hungrier just looking at these.", price: 12.49, imageUrl: "https://seanallen-course-backend.herokuapp.com/images/appetizers/stuff-shells.jpg", calories: 850, protein: 4, carbs: 42),
     ]
+
+    static let orderItems: [Appetizer] = [
+        Appetizer(id: 1, name: "Asian Flank Steak", description: "This perfectly thin cut just melts in your mouth.", price: 8.99, imageUrl: "https://seanallen-course-backend.herokuapp.com/images/appetizers/asian-flank-steak.jpg", calories: 300, protein: 14, carbs: 0),
+        Appetizer(id: 2, name: "Blackened Shrimp", description: "Seasoned shrimp from the depths of the Atlantic Ocean.", price: 6.99, imageUrl: "https://seanallen-course-backend.herokuapp.com/images/appetizers/blackened-shrimp.jpg", calories: 450, protein: 4, carbs: 3),
+        Appetizer(id: 3, name: "Buffalo Chicken Bites", description: "The tasty bites of chicken have just the right amount of kick to them.", price: 7.49, imageUrl: "https://seanallen-course-backend.herokuapp.com/images/appetizers/buffalo-chicken-bites.jpg", calories: 800, protein: 5, carbs: 22)]
 }

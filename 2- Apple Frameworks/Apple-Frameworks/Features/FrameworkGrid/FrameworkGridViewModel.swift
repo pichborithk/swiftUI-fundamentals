@@ -15,7 +15,7 @@ final class FrameworkGridViewModel: ObservableObject {
 //        }
 //    }
     
-    let colums = Array(repeating: GridItem(.flexible()), count: 3)
+    let columns = Array(repeating: GridItem(.flexible()), count: 3)
     let frameworks: [Framework] = MockData.frameworks
     
 //    @Published var isShowingDetailView = false
